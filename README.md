@@ -1,9 +1,9 @@
-## 🚀 One-Line BBRv2 Installation (Fully Automated)
+## 🚀 One-Line Network Optimizer Installation (Fully Automated)
 
 Just run this in your terminal (works on root or non-root):
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/emadtoranji/NetworkOptimizer/main/run.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/emadtoranji/NetworkOptimizer/main/optimize.sh)
 ```
 
 ---
