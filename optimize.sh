@@ -4,8 +4,8 @@ set -e
 print_banner() {
   echo -e "\033[1;35m"
   echo "╭────────────────────────────────────────────╮"
-  echo "│         NetworkOptimizer v1.0              │"
-  echo "│  TCP Congestion + Queue + Socket Tweaks   │"
+  echo "│         NetworkOptimizer v1.0.1            │"
+  echo "│   TCP Congestion + Queue + Socket Tweaks   │"
   echo "│       + Advanced Kernel Networking         │"
   echo "╰────────────────────────────────────────────╯"
   echo -e "\033[0m"
