@@ -3,7 +3,7 @@
 Just run this in your terminal (works on root or non-root):
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/emadtoranji/BBRv2/main/bbrv2.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/emadtoranji/NetworkOptimizer/main/run.sh)
 ```
 
 ---
