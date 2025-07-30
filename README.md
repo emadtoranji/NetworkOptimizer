@@ -1,4 +1,4 @@
-## 🚀 One-Line Network Optimizer Installation (Fully Automated)
+## 🚀 One-Line Installation (Network Optimizer Script)
 
 Just run this in your terminal (works on root or non-root):
 
@@ -10,13 +10,14 @@ bash <(curl -fsSL https://raw.githubusercontent.com/emadtoranji/NetworkOptimizer
 
 ## ✨ Features
 
-- ✅ Activates `tcp_bbr` congestion control (BBRv2-ready)
+- ✅ Enables Google's BBR congestion control (`tcp_bbr`) — BBRv2 if using a patched kernel, otherwise defaults to BBRv1
 - ✅ Configures `fq` queueing discipline for optimal performance
 - ✅ Enables TCP Fast Open, MTU probing, and aggressive memory windows
 - ✅ Safe for production environments
 - ✅ Writes clean configurations to `/etc/sysctl.d/`
 - ✅ No external dependencies or systemd required
 - ✅ Easy to install and uninstall
+- ⚠️ BBRv2 is not enabled by default in Linux. It requires a patched kernel such as [BBRv2 backports](https://github.com/google/bbr/blob/master/Documentation/bbr2.org).
 
 ---
 
@@ -33,9 +34,9 @@ uname -r
 
 ---
 
-## 🔍 Verify BBRv2 Installation
+## 🔍 Verify BBR Activation (BBRv1 or v2, depending on kernel)
 
-After running the script, confirm BBRv2 is active:
+After running the script, confirm BBR is active (usually BBRv1 unless you use a custom kernel with BBRv2 patches):
 
 1. Check TCP congestion control:
    ```bash
@@ -65,7 +66,7 @@ After running the script, confirm BBRv2 is active:
 
 ## 🧠 How It Works
 
-Google’s **BBR (Bottleneck Bandwidth and Round-Trip Time)** algorithm optimizes TCP by modeling network performance instead of relying on packet loss. This is ideal for high-latency or lossy networks.
+While this script enables BBR (tcp_bbr), Linux does not currently offer a user-selectable distinction between BBRv1 and BBRv2. Most systems will run BBRv1 unless a custom kernel with BBRv2 support is used.
 
 The script performs the following:
 
@@ -91,7 +92,7 @@ The script performs the following:
 
 To revert changes:
 ```bash
-sudo rm -f /etc/sysctl.d/99-bbrv2.conf
+sudo rm -f /etc/sysctl.d/99-network-optimizer.conf
 sudo rm -f /etc/modules-load.d/bbrv2.conf
 sudo sysctl --system
 sudo reboot
@@ -111,9 +112,10 @@ sudo reboot
 | Oracle Linux 8     | 5.15+ (UEK) | ✅  |
 | Alpine Edge        | 6.1+     | ✅     |
 
+⚠️ Experimental (BBRv2 requires custom kernel for full effect)
 ---
 
-## 📈 Performance Benefits
+## 📈 Performance Benefits (with BBR enabled)
 
 After enabling BBRv2, expect:
 - 🌍 Faster CDN/Cloudflare traffic
@@ -125,7 +127,7 @@ After enabling BBRv2, expect:
 
 ## ⚠️ Troubleshooting
 
-- **BBR not active**: Ensure your kernel supports BBRv2 (`5.4+`). Upgrade your kernel if needed:
+- **BBR not active**: Ensure your kernel supports tcp_bbr (5.4+). BBRv2 requires experimental kernel patches and is not enabled by default in mainline kernels. Upgrade your kernel if needed:
   ```bash
   sudo apt update && sudo apt install linux-generic-hwe-22.04
   ```
