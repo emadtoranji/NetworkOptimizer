@@ -112,7 +112,6 @@ sudo reboot
 | Oracle Linux 8     | 5.15+ (UEK) | ✅  |
 | Alpine Edge        | 6.1+     | ✅     |
 
-⚠️ Experimental (BBRv2 requires custom kernel for full effect)
 ---
 
 ## 📈 Performance Benefits (with BBR enabled)
