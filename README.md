@@ -116,7 +116,7 @@ sudo reboot
 
 ## 📈 Performance Benefits (with BBR enabled)
 
-After enabling BBRv2, expect:
+After enabling BBR (v1 or v2, depending on your kernel), you can expect:
 - 🌍 Faster CDN/Cloudflare traffic
 - 🛰️ Reduced SSH/RDP latency
 - 📦 Improved TCP-based download speeds (HTTP, Git, APT/YUM, etc.)
